@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+<div class="page-header">
+  <h1>Sistema de Agendamentos</h1>
+  <a class="button" href="/appointments/new">Novo agendamento</a>
+</div>
+
+<% if (appointments.length === 0) { %>
+  <div class="empty-state">Nenhum agendamento encontrado.</div>
+<% } else { %>
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Serviço</th>
+          <th>Data</th>
+          <th>Horário</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach((appointment) => { %>
+          <tr>
+            <td><%= appointment.clientName %></td>
+            <td><%= appointment.service %></td>
+            <td><%= appointment.appointmentDate %></td>
+            <td><%= appointment.appointmentTime %></td>
+            <td>
+              <div class="actions">
+                <a class="button secondary" href="/appointments/<%= appointment.id %>">Visualizar</a>
+                <a class="button secondary" href="/appointments/<%= appointment.id %>/edit">Editar</a>
+                <form action="/appointments/<%= appointment.id %>/delete" method="POST" data-confirm-delete>
+                  <button class="button danger" type="submit">Excluir</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+<%- include('../partials/footer') %>

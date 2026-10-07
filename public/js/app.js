@@ -1,0 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const forms = document.querySelectorAll("form[data-confirm-delete]");
+
+  forms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      const confirmed = window.confirm("Tem certeza que deseja excluir este agendamento?");
+      if (!confirmed) {
+        event.preventDefault();
+      }
+    });
+  });
+});

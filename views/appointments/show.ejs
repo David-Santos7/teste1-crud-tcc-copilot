@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+<h1>Detalhes do agendamento</h1>
+
+<div class="info-box">
+  <strong>Cliente:</strong> <%= appointment.clientName %>
+</div>
+
+<div class="meta">
+  <span class="meta-item">Serviço: <%= appointment.service %></span>
+  <span class="meta-item">Data: <%= appointment.appointmentDate %></span>
+  <span class="meta-item">Horário: <%= appointment.appointmentTime %></span>
+</div>
+
+<p><strong>Observações:</strong> <%= appointment.notes || "Nenhuma observação." %></p>
+
+<div class="actions">
+  <a class="button secondary" href="/appointments/<%= appointment.id %>/edit">Editar</a>
+  <form action="/appointments/<%= appointment.id %>/delete" method="POST" data-confirm-delete>
+    <button class="button danger" type="submit">Excluir</button>
+  </form>
+  <a class="button secondary" href="/appointments">Voltar</a>
+</div>
+<%- include('../partials/footer') %>

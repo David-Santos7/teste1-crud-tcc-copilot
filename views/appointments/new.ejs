@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+<h1>Novo agendamento</h1>
+
+<% if (errorMessage) { %>
+  <div class="error-box"><%= errorMessage %></div>
+<% } %>
+
+<form action="/appointments" method="POST">
+  <div class="form-grid">
+    <div class="field">
+      <label for="clientName">Nome do cliente</label>
+      <input id="clientName" name="clientName" type="text" value="<%= appointment ? appointment.clientName || "" : "" %>" required />
+    </div>
+
+    <div class="field">
+      <label for="service">Serviço</label>
+      <input id="service" name="service" type="text" value="<%= appointment ? appointment.service || "" : "" %>" required />
+    </div>
+
+    <div class="field">
+      <label for="appointmentDate">Data</label>
+      <input id="appointmentDate" name="appointmentDate" type="date" value="<%= appointment ? appointment.appointmentDate || "" : "" %>" required />
+    </div>
+
+    <div class="field">
+      <label for="appointmentTime">Horário</label>
+      <input id="appointmentTime" name="appointmentTime" type="time" value="<%= appointment ? appointment.appointmentTime || "" : "" %>" required />
+    </div>
+
+    <div class="field full">
+      <label for="notes">Observações</label>
+      <textarea id="notes" name="notes"><%= appointment && appointment.notes ? appointment.notes : "" %></textarea>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="submit">Criar agendamento</button>
+    <a class="button secondary" href="/appointments">Cancelar</a>
+  </div>
+</form>
+<%- include('../partials/footer') %>

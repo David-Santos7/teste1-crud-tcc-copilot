@@ -1,0 +1,32 @@
+{
+  "name": "appointment-system",
+  "version": "1.0.0",
+  "description": "Sistema de agendamento full stack usando Express, SQLite e EJS",
+  "main": "src/main/server.js",
+  "scripts": {
+    "dev": "nodemon src/main/server.js",
+    "start": "node src/main/server.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "npm run lint && npm test"
+  },
+  "keywords": [
+    "appointment",
+    "express",
+    "sqlite",
+    "ejs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^18.0.6",
+    "ejs": "^7.0.1",
+    "eslint": "^10.12.0",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.9.9",
+    "supertest": "^7.3.1"
+  }
+}
